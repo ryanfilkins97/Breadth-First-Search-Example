@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 		return -1;
 	}
 
-	// Floors is an array of integers. The index in the array represents the floor number - 1. The value at that index is the index of the parent floor in the DFS
+	// Floors is an array of integers. The index in the array represents the floor number - 1. The value at that index is the index of the parent floor in the BFS
 	int *floors = malloc(sizeof(int) * numFloors);
 	int i = 0;
 

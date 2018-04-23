@@ -1,10 +1,10 @@
-typedef struct DFSQueueNode
+typedef struct BFSQueueNode
 {
 	int index;
-	struct DFSQueueNode *next;
+	struct BFSQueueNode *next;
 }QueueNode;
 
-typedef struct DFSQueue
+typedef struct BFSQueue
 {
 	QueueNode *head;
 	QueueNode *tail;
@@ -16,8 +16,8 @@ typedef struct PrintStackNode
 	struct PrintStackNode * next;
 }StackNode;
 
-void DFSEnqueue(Queue *queue, int key);
-int DFSDequeue(Queue *queue);
+void BFSEnqueue(Queue *queue, int key);
+int BFSDequeue(Queue *queue);
 void printPush(StackNode **head, int key);
 int printPop(StackNode *head);
 StackNode* findShortestPath(int *floors, int numFloors, int starting, int goal, int upInterval, int downInterval);
