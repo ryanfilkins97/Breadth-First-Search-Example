@@ -3,7 +3,7 @@
 
 #include "shortest_path.h"
 
-void DFSEnqueue(Queue *queue, int key)
+void BFSEnqueue(Queue *queue, int key)
 {
 	QueueNode *newNode = malloc(sizeof(QueueNode));
 	newNode->index = key;
@@ -22,7 +22,7 @@ void DFSEnqueue(Queue *queue, int key)
 	}
 }
 
-int DFSDequeue(Queue *queue)
+int BFSDequeue(Queue *queue)
 {
 	// Return -1 if queue is empty
 	int index = -1;
@@ -68,13 +68,13 @@ StackNode* findShortestPath(int *floors, int numFloors, int starting, int goal, 
 
 	StackNode *path = NULL;
 
-	DFSEnqueue(queue, startingIndex);
+	BFSEnqueue(queue, startingIndex);
 	int currentIndex = 0;
 
 	// Sentinal value for starting index marks as explored but has no valid parent
 	*(floors + startingIndex) = -2;
 
-	while((currentIndex = DFSDequeue(queue)) != -1)
+	while((currentIndex = BFSDequeue(queue)) != -1)
 	{
 		if(currentIndex == goalIndex)
 		{
@@ -98,12 +98,12 @@ StackNode* findShortestPath(int *floors, int numFloors, int starting, int goal, 
 			if(currentIndex + upInterval <= maxIndex && *(floors + currentIndex + upInterval) == -1)
 			{
 				*(floors + currentIndex + upInterval) = currentIndex;
-				DFSEnqueue(queue, (currentIndex + upInterval));
+				BFSEnqueue(queue, (currentIndex + upInterval));
 			}
 			if(currentIndex - downInterval >= 0 && *(floors + currentIndex - downInterval) == -1)
 			{
 				*(floors + currentIndex - downInterval) = currentIndex;
-				DFSEnqueue(queue, (currentIndex - downInterval));
+				BFSEnqueue(queue, (currentIndex - downInterval));
 			}
 		}
 	}
